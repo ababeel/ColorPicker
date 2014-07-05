@@ -23,7 +23,13 @@
 
 @end
 
+
+
 @implementation SSColorPicker
+
+NSInteger movingSlider = 0;
+
+
 @synthesize hueSelector, colorSelector, bkgd, huebkgd, boxPos, boxSize, overlay, shadow, saturation, brightness, percentage, colorUtils, delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -201,11 +207,16 @@
     }
 }
 
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event from:(id)sender
 {
     UITouch *touch = [touches anyObject];
-    CGPoint location;
+    CGPoint location = [touch locationInView:self.view];
     
+    
+//    NSLog(@"Sender %d",senderTag);
+    
+    /*
     if ([(SSTouchView *)sender tag] == 2) {
         location = [touch locationInView:[self bkgd]];
         [self checkColorPosition:location];
@@ -222,6 +233,31 @@
         // tell delegate to dismiss this view...
         [delegate dismiss:self];
     }
+    */
+    
+    
+    
+    if(in_circle(self.bkgd.center.x, self.bkgd.center.x, self.bkgd.frame.size.width/2.0, location.x, location.y))
+    {
+            location = [touch locationInView:[self bkgd]];
+            [self checkColorPosition:location];
+            movingSlider = 2;
+//            NSLog(@"Inside Bkgd");
+    }
+    else
+        
+        if (in_circle(self.huebkgd.center.x, self.huebkgd.center.x, self.huebkgd.frame.size.width/2.0, location.x, location.y)) {
+            location = [touch locationInView:[self huebkgd]];	// get the touch position
+            [self checkHuePosition:location];
+            movingSlider = 1;
+//            NSLog(@"Inside Huebkgd");
+        }
+        else
+            if (!(in_circle(self.huebkgd.center.x, self.huebkgd.center.x, self.huebkgd.frame.size.width/2.0+20, location.x, location.y))){
+                [delegate dismissColorPicker:self];
+                movingSlider = 0;
+            }
+    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event from:(id)sender
@@ -229,6 +265,9 @@
     UITouch *touch = [touches anyObject];   
     CGPoint location;	
     
+    
+ //   NSLog(@"Touches Moved");
+    /*
     if ([(SSTouchView *)sender tag] == 5) {
         location = [touch locationInView:[touch view]];	// get the touch position
         [self checkColorPosition:location];
@@ -236,6 +275,30 @@
         location = [touch locationInView:[self huebkgd]];	// get the touch position
         [self checkHuePosition:location];
     }
+     */
+    switch (movingSlider) {
+            
+        case 0:  // maybe not needed
+            
+            [delegate dismissColorPicker:self];
+
+            break;
+            
+        case 1:
+
+            location = [touch locationInView:[self huebkgd]];	// get the touch position
+            [self checkHuePosition:location];
+            break;
+        case 2:
+            
+            location = [touch locationInView:[self bkgd]];
+            [self checkColorPosition:location];
+            break;
+            
+
+    }
+    
+    
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event from:(id)sender
@@ -246,6 +309,21 @@
 - (void)colorChanged
 {
     [[self delegate] colorChanged:[UIColor colorWithHue:[self percentage] saturation:[self saturation] brightness:[self brightness] alpha:1.0f] from:self];
+}
+
+-(void) showColorPicker:(UIColor *)startColor at:(CGPoint)centerPoint;
+{
+    [[[self delegate] view] addSubview:[self view]];
+    [[self view] setCenter:centerPoint];
+    [[self view] setAlpha:0];
+    //[self setColor:[UIColor colorWithRed:.6 green:.6 blue:.6 alpha:1]];
+    [self setColor:startColor];
+    
+    [UIView animateWithDuration:.6 animations:^{
+        [[self view] setAlpha:1];
+    }];
+
+
 }
 
 - (void)showColorPicker:(UIColor *)startColor

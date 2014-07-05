@@ -12,4 +12,7 @@
 
 @property (nonatomic) BOOL shouldForwardTouches;
 
+
+BOOL ImagePointIsTransparent(UIImage *uIImage, CGPoint p);
+
 @end

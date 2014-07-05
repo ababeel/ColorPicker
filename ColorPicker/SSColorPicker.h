@@ -24,7 +24,7 @@
 
 - (UIView *)view;
 - (void)colorChanged:(UIColor *)color from:(id)sender;
-- (void)dismiss:(id)sender;
+- (void)dismissColorPicker:(id)sender;
 
 @end
 
@@ -47,8 +47,7 @@
 
 -(void) setColor:(UIColor *)color;
 -(void) showColorPicker:(UIColor *)startColor;
-
-
+-(void) showColorPicker:(UIColor *)startColor at:(CGPoint)centerPoint;
 
 
 

@@ -20,7 +20,7 @@
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
-    [delegate touchesBegan:touches withEvent:event from:self];
+    [delegate touchesMoved:touches withEvent:event from:self];
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AC337878-4860-49DA-B07D-55DB882D80D9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ColorPicker</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D45BF064-0CC3-42B7-9379-28FE85DB0E53</key>
+		<string>https://github.com/ababeel/ColorPicker.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ColorPicker.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D45BF064-0CC3-42B7-9379-28FE85DB0E53</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ababeel/ColorPicker.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D45BF064-0CC3-42B7-9379-28FE85DB0E53</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D45BF064-0CC3-42B7-9379-28FE85DB0E53</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ColorPicker</string>
+		</dict>
+	</array>
+</dict>
+</plist>

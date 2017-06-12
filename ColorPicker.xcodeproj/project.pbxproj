@@ -35,6 +35,7 @@
 		55E753CD154C7C71003F465D /* colorPickerOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E753C6154C7C70003F465D /* colorPickerOverlay.png */; };
 		55E753CE154C7C71003F465D /* ColorPickerShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E753C7154C7C70003F465D /* ColorPickerShadow.png */; };
 		55E753D1154C7C71003F465D /* menuColorPanelBkgd.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E753CA154C7C70003F465D /* menuColorPanelBkgd.png */; };
+		EF91E6B41EEB21F40039F78B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF91E6B31EEB21F40039F78B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		55E753C6154C7C70003F465D /* colorPickerOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorPickerOverlay.png; sourceTree = "<group>"; };
 		55E753C7154C7C70003F465D /* ColorPickerShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ColorPickerShadow.png; sourceTree = "<group>"; };
 		55E753CA154C7C70003F465D /* menuColorPanelBkgd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuColorPanelBkgd.png; sourceTree = "<group>"; };
+		EF91E6B31EEB21F40039F78B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				5565379D161250DC00823DB2 /* SSTouchViewNoTransparent.h */,
 				5565379E161250DC00823DB2 /* SSTouchViewNoTransparent.m */,
 				55E753051549D0B7003F465D /* Supporting Files */,
+				EF91E6B31EEB21F40039F78B /* Launch Screen.storyboard */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				554E3F2B154F472500FF955B /* HuePickerBkgd2.png in Resources */,
 				554E3F2D154F5FA600FF955B /* Icon.png in Resources */,
 				554E3F2F154F5FA900FF955B /* Icon@2x.png in Resources */,
+				EF91E6B41EEB21F40039F78B /* Launch Screen.storyboard in Resources */,
 				550CCAF9155169690006721F /* SSColorPicker.xib in Resources */,
 				5565379516124EEA00823DB2 /* Default-568h@2x.png in Resources */,
 				5565379616124EEA00823DB2 /* Default.png in Resources */,

@@ -53,7 +53,7 @@
     [[self view] setBackgroundColor:color];
 }
 
-- (void)dismiss:(id)sender
+- (void)dismissColorPicker:(id)sender
 {
     [UIView animateWithDuration:.6 animations:^{
         [[[self colorPicker] view] setAlpha:0];
@@ -61,12 +61,15 @@
     }];
 }
 
+
 - (IBAction)show:(id)sender
 {
     [self setColorPicker:[[SSColorPicker alloc] initWithNibName:@"SSColorPicker" bundle:nil]];
     [[self colorPicker] setDelegate:self];
     //[[self colorPicker] setColor:[[self view] backgroundColor]];
     
-    [[self colorPicker] showColorPicker:[[self view] backgroundColor]];
+    [[self colorPicker] showColorPicker:[[self view]  backgroundColor] at:[[self view] center]];
+    
+    //[[self colorPicker] showColorPicker:[[self view] backgroundColor]];
 }
 @end

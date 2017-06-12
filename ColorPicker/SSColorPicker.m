@@ -29,6 +29,11 @@
 
 NSInteger movingSlider = 0;
 
+static inline short in_circle(center_x, center_y, radius, x, y) {
+    
+    return (((center_x - x) * (center_x - x) + (center_y - y) * (center_y - y)) <= (radius * radius))?1:0;
+}
+
 
 @synthesize hueSelector, colorSelector, bkgd, huebkgd, boxPos, boxSize, overlay, shadow, saturation, brightness, percentage, colorUtils, delegate;
 
@@ -213,36 +218,12 @@ NSInteger movingSlider = 0;
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
     
-    
-//    NSLog(@"Sender %d",senderTag);
-    
-    /*
-    if ([(SSTouchView *)sender tag] == 2) {
-        location = [touch locationInView:[self bkgd]];
-        [self checkColorPosition:location];
-    } else if ([(SSTouchView *)sender tag] == 7) {
-        if ([(SSTouchViewNoTransparent*)sender shouldForwardTouches]) {
-            // a transparent region of this view was touched and we need to treat it as
-            // a touch that should dismiss the view...
-            [delegate dismiss:self];
-        } else {
-            location = [touch locationInView:[self huebkgd]];	// get the touch position
-            [self checkHuePosition:location];
-        }
-    } else if ([(SSTouchView *)sender tag] == 10) {
-        // tell delegate to dismiss this view...
-        [delegate dismiss:self];
-    }
-    */
-    
-    
-    
     if(in_circle(self.bkgd.center.x, self.bkgd.center.x, self.bkgd.frame.size.width/2.0, location.x, location.y))
     {
             location = [touch locationInView:[self bkgd]];
             [self checkColorPosition:location];
             movingSlider = 2;
-//            NSLog(@"Inside Bkgd");
+            NSLog(@"Inside Bkgd");
     }
     else
         
@@ -250,15 +231,15 @@ NSInteger movingSlider = 0;
             location = [touch locationInView:[self huebkgd]];	// get the touch position
             [self checkHuePosition:location];
             movingSlider = 1;
-//            NSLog(@"Inside Huebkgd");
+            NSLog(@"Inside Huebkgd");
         }
         else
             if (!(in_circle(self.huebkgd.center.x, self.huebkgd.center.x, self.huebkgd.frame.size.width/2.0+20, location.x, location.y))){
                 [delegate dismissColorPicker:self];
                 movingSlider = 0;
             }
-    
 }
+    
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event from:(id)sender
 {
@@ -266,22 +247,12 @@ NSInteger movingSlider = 0;
     CGPoint location;	
     
     
- //   NSLog(@"Touches Moved");
-    /*
-    if ([(SSTouchView *)sender tag] == 5) {
-        location = [touch locationInView:[touch view]];	// get the touch position
-        [self checkColorPosition:location];
-    } else if ([(SSTouchView *)sender tag] == 10) {
-        location = [touch locationInView:[self huebkgd]];	// get the touch position
-        [self checkHuePosition:location];
-    }
-     */
+    NSLog(@"Touches Moved");
     switch (movingSlider) {
             
         case 0:  // maybe not needed
             
             [delegate dismissColorPicker:self];
-
             break;
             
         case 1:
@@ -294,8 +265,6 @@ NSInteger movingSlider = 0;
             location = [touch locationInView:[self bkgd]];
             [self checkColorPosition:location];
             break;
-            
-
     }
     
     
